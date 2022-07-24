@@ -38,7 +38,7 @@ require_once "config.php";
         <textarea class="descriptionBox" form="uploadform" name="description" maxlength="280"></textarea>
     
     </p>
-	<p><input type="submit" name="submit" value="Upload Photo"></p>
+	<p><input class="button" type="submit" name="submit" value="Upload Photo"></p>
 </form>
 </div>
 </div>

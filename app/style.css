@@ -51,3 +51,9 @@ body {
   width: 99%;
   margin-right: 10px;
 }
+.button {
+  padding: 10px;
+  background-color: lightskyblue;
+  border-radius: 10px;
+  border-width: 0;
+}

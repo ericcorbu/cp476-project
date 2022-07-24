@@ -104,8 +104,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <label>Display Name</label>
                 <input type="text" name="displayname" class="form-control" value="<?php echo $userData['displayname']; ?>">
             </div>
+            <br/>
             <div class="form-group">
-                <input type="submit" class="btn btn-primary" value="Update Display Name">
+                <input type="submit" class="button" value="Update Display Name">
             </div>
         </form>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post"> 
@@ -120,8 +121,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <input type="password" name="newpassword" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>">
                 <span class="invalid-feedback"><?php echo $newpassword_err; ?></span>
             </div>
+            <br />
             <div class="form-group">
-                <input type="submit" class="btn btn-primary" value="Update Password">
+                <input type="submit" class="button" value="Update Password">
             </div>
         </form>
 </div>
