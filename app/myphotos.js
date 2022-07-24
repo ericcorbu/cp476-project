@@ -49,7 +49,7 @@ const showMyPhotos = (photoJson) => {
 
     const photoDescription = document.createElement("p");
     photoDescription.className = "photo-description";
-    photoDescription.innerHTML = "Go to 'Upload Picture' to begin.";
+    photoDescription.innerHTML = "Go to 'Upload Photo' to begin.";
 
     photoContainer.appendChild(userHeader);
     photoContainer.appendChild(photoDescription);

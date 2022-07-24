@@ -91,8 +91,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <body>
         <nav class="navbar">
             <a href="index.php">Home</a>
-            <a href="myphotos.php">My Pictures</a>
-            <a href="upload.php">Upload Picture</a>
+            <a href="myphotos.php">My Photos</a>
+            <a href="upload.php">Upload Photo</a>
             <a href="account.php"><strong>Account</strong></a>
             <a href="logout.php">Logout</a>
         </nav>

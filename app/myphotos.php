@@ -19,8 +19,8 @@ echo '
     <body>
         <nav class="navbar">
             <a href="index.php">Home</a>
-            <a href="myphotos.php"><strong>My Pictures</strong></a>
-            <a href="upload.php">Upload Picture</a>
+            <a href="myphotos.php"><strong>My Photos</strong></a>
+            <a href="upload.php">Upload Photo</a>
             <a href="account.php">Account</a>
             <a href="logout.php">Logout</a>
         </nav>

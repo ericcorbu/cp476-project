@@ -17,8 +17,8 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     <body>
         <nav>
             <a href="index.php">Home</a>
-            <a href="myphotos.php">My Pictures</a>
-            <a href="upload.php">Upload Picture</a>
+            <a href="myphotos.php">My Photos</a>
+            <a href="upload.php">Upload Photo</a>
             <a href="account.php">Account</a>
             <a href="logout.php">Logout</a>
         </nav>
