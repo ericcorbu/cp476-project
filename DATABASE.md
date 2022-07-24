@@ -3,9 +3,9 @@
 ## Users - Implemented
 
 - displayname: VARCHAR(100)
-- username\* VARCHAR(40)
-- password\* (hashed)
-- id
+- username\*: VARCHAR(50)
+- password\* (hashed): VARCHAR(255)
+- id: INT
 
 #### \* Required in order to support authentication with username/password
 
@@ -13,11 +13,11 @@
 
 - userimage: VARCHAR(100) (random_bytes like imageId)
 
-## Images - Not fully implemented
+## Images - Implemented
 
-- description VARCHAR
+- description VARCHAR(280)
 - userId: INT
-- imageId VARCHAR
+- imageId VARCHAR(100)
 - is_private: boolean
 
 # Stretch
