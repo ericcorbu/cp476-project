@@ -1,15 +1,15 @@
 # Tables
 
-## Users
+## Users - Implemented
 
 ### Required in order to support authentication with username/password
 
-- Display name: VARCHAR(100)
+- displayname: VARCHAR(100)
 - username VARCHAR(40)
 - password (hashed)
 - id
 
-## Images
+## Images - Not fully implemented
 
 - description VARCHAR
 - userId: INT
