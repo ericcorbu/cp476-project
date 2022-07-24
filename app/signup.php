@@ -107,7 +107,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     </style>
 </head>
 <body>
-    <div class="wrapper">
+<nav class="navbar">
+            <a href="index.php">Home</a>
+            <a href="myphotos.php">My Pictures</a>
+            <a href="upload.php">Upload Picture</a>
+            <a href="account.php">Account</a>
+            <a href="logout.php">Logout</a>
+        </nav>
+    <div class="content">
+        <div class="default-container">
         <h2>Sign Up</h2>
         <p>Please fill this form to create an account.</p>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
@@ -132,6 +140,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             </div>
             <p>Already have an account? <a href="login.php">Login here</a>.</p>
         </form>
+</div>
     </div>    
 </body>
 </html>

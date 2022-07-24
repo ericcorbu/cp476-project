@@ -68,14 +68,17 @@ else if($_SERVER["REQUEST_METHOD"] == "POST"){
             // if (isset($_POST['message']) && $_POST['message'] == "update")
             else  if (isset($decoded['message']) && $decoded['message'] == "update"){
 
-                $sql = "UPDATE photos SET description = ? WHERE imageId = ?";
-                
+                $sql = "UPDATE photos SET description = ?, is_private = ? WHERE imageId = ?";
+                echo var_dump($decoded);
                 if($stmt = $mysqli->prepare($sql)){
                     // Bind variables to the prepared statement as parameters
 
                     $newDescription = trim($decoded["description"]);
                     $imageId = trim($decoded["id"]);
-                    $stmt->bind_param("ss", $newDescription, $imageId);
+                    $isPrivate = $decoded["is_private"];
+
+
+                    $stmt->bind_param("sis", $newDescription, $isPrivate, $imageId);
                     // Attempt to execute the prepared statement
                     if($stmt->execute()){
                         echo json_encode(array("status"=>"success")); 

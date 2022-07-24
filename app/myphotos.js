@@ -2,8 +2,13 @@ window.onload = () => {
   fetchMyPhotos();
 };
 
-const updateDescriptions = (photoId, newDescription) => {
-  const json = { message: "update", id: photoId, description: newDescription };
+const updateDescriptions = (photoId, newDescription, isPrivate) => {
+  const json = {
+    message: "update",
+    id: photoId,
+    description: newDescription,
+    is_private: isPrivate,
+  };
 
   const req = new XMLHttpRequest();
   req.onreadystatechange = function () {
@@ -71,17 +76,47 @@ const showMyPhotos = (photoJson) => {
     updateButton.className = "button";
     updateButton.innerHTML = "Update Description";
     updateButton.onclick = () =>
-      updateDescriptions(photo.imageId, photoDescription.value);
+      updateDescriptions(
+        photo.imageId,
+        photoDescription.value,
+        privateRadioButton.checked
+      );
 
     const deleteButton = document.createElement("button");
     deleteButton.className = "deleteButton button";
     deleteButton.innerHTML = "❌";
     deleteButton.onclick = () => deletePhotos(photo.imageId);
 
+    const publicRadioButton = document.createElement("input");
+    publicRadioButton.type = "radio";
+    publicRadioButton.name = "visibility";
+    publicRadioButton.value = "public";
+    const publicLabel = document.createElement("label");
+    publicLabel.textContent = "Public";
+
+    const privateRadioButton = document.createElement("input");
+    privateRadioButton.type = "radio";
+    privateRadioButton.name = "visibility";
+    privateRadioButton.value = "private";
+    const privateLabel = document.createElement("label");
+    privateLabel.textContent = "Private";
+
+    if (photo.is_private) {
+      privateRadioButton.checked = true;
+    } else {
+      publicRadioButton.checked = true;
+    }
+
     photoContainer.appendChild(userHeader);
     userHeader.appendChild(deleteButton);
     photoContainer.appendChild(imageElement);
     photoContainer.appendChild(photoDescription);
+
+    photoContainer.appendChild(publicRadioButton);
+    photoContainer.appendChild(publicLabel);
+    photoContainer.appendChild(privateRadioButton);
+    photoContainer.appendChild(privateLabel);
+
     photoContainer.appendChild(updateButton);
 
     contentDiv.appendChild(photoContainer);

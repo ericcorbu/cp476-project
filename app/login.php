@@ -100,9 +100,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     </style>
 </head>
 <body>
-    <div class="wrapper">
+<nav class="navbar">
+            <a href="index.php">Home</a>
+            <a href="myphotos.php">My Pictures</a>
+            <a href="upload.php">Upload Picture</a>
+            <a href="account.php">Account</a>
+        </nav>
+    <div class="content">
+        <div class="default-container">
         <h2>Login</h2>
-        <p>Please fill in your credentials to login.</p>
+        <p>Please enter your credentials to login.</p>
 
         <?php 
         if(!empty($login_err)){
@@ -126,6 +133,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             </div>
             <p>Don't have an account? <a href="signup.php">Sign up now</a>.</p>
         </form>
+    </div>
     </div>
 </body>
 </html>

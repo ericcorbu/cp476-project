@@ -31,7 +31,7 @@ require_once "config.php";
 <form action="handle_upload.php" enctype="multipart/form-data" method="post" id="uploadform">
 	<h3>Select a photo from your device:</h3>
 	
-	<p><input type="file" name="the_file"></p>
+	<p><input type="file" name="the_file" accept="image/*"></p>
     
         <label>Description</label>
         <br/>
