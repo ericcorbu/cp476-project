@@ -101,10 +101,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <meta charset="UTF-8">
     <link rel="stylesheet" href="style.css">
     <title>Sign Up</title>
-    <style>
-        body{ font: 14px sans-serif; }
-        .wrapper{ width: 360px; padding: 20px; }
-    </style>
+
 </head>
 <body>
 <nav class="navbar">

@@ -14,3 +14,5 @@ Unauthenticated uses can view public photos only.
 1. Clone into your Apache htdocs directory
 
 2. run utils/create_tables.php to initialize the database tables
+
+3. Navigate to app/index.php

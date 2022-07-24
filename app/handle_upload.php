@@ -2,7 +2,7 @@
 // Start a session
 session_start();
  
-// Check if the user is logged in, if not then redirect him to login page
+// verify user is logged in or redirect to login page
 if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     header("location: login.php");
     exit;
@@ -11,8 +11,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 // Include config file
 require_once "config.php";
 ?>
-<?php // Script 11.4 - upload_file.php
-/* This script displays and handles an HTML form. This script takes a file upload and stores it on the server. */
+<?php 
     $imageId = bin2hex(random_bytes(16)) . "." . pathinfo($_FILES['the_file']['name'], PATHINFO_EXTENSION);
     $userId = $_SESSION['id'];
     $description = $_POST["description"];
