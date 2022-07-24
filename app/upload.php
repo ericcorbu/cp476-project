@@ -20,10 +20,10 @@ require_once "config.php";
 </head>
 <body>
         <nav class="navbar">
-            <a href="index.php">Home</a> |
-            <a href="myphotos.php">My Pictures</a> |
-            <a href="upload.php">Upload Picture</a> |
-            <a href="account.php">Account</a> |
+            <a href="index.php">Home</a>
+            <a href="myphotos.php">My Pictures</a>
+            <a href="upload.php">Upload Picture</a>
+            <a href="account.php">Account</a>
             <a href="logout.php">Logout</a>
         </nav>
 <div class="content">
@@ -36,6 +36,9 @@ require_once "config.php";
         <label>Description</label>
         <br/>
         <textarea class="descriptionBox" form="uploadform" name="description" maxlength="280"></textarea>
+        <br/>
+        <input type="radio" name="visibility" value="public">Public
+        <input type="radio" name="visibility" value="private" checked>Private
     
     </p>
 	<p><input class="button" type="submit" name="submit" value="Upload Photo"></p>

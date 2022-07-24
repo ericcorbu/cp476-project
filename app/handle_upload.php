@@ -16,7 +16,12 @@ require_once "config.php";
     $imageId = bin2hex(random_bytes(16)) . "." . pathinfo($_FILES['the_file']['name'], PATHINFO_EXTENSION);
     $userId = $_SESSION['id'];
     $description = $_POST["description"];
+    $visibility = $_POST["visibility"];
     $is_private = FALSE;
+
+    if ($visibility == 'private') {
+        $is_private = TRUE;
+    }
 
 	// Try to move the uploaded file:
 	if (move_uploaded_file ($_FILES['the_file']['tmp_name'], "./uploads/$imageId")) {

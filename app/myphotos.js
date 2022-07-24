@@ -2,8 +2,55 @@ window.onload = () => {
   fetchMyPhotos();
 };
 
+const updateDescriptions = (photoId, newDescription) => {
+  const json = { message: "update", id: photoId, description: newDescription };
+
+  const req = new XMLHttpRequest();
+  req.onreadystatechange = function () {
+    if (this.readyState != 4) return;
+
+    if (this.status == 200) {
+      alert("Description updated successfully");
+      location.reload();
+      //console.log(this.response);
+    }
+  };
+  req.open("POST", "", false);
+  req.send(JSON.stringify(json));
+};
+const deletePhotos = (photoId) => {
+  const json = { message: "delete", id: photoId };
+  const req = new XMLHttpRequest();
+  req.onreadystatechange = function () {
+    if (this.readyState != 4) return;
+    if (this.status == 200) {
+      alert("Photo deleted successfully");
+      location.reload();
+    }
+  };
+  req.open("POST", "", false);
+  req.send(JSON.stringify(json));
+};
+
 const showMyPhotos = (photoJson) => {
   const contentDiv = document.querySelector(".content");
+  if (photoJson.length === 0) {
+    const photoContainer = document.createElement("div");
+    photoContainer.className = "photo-container";
+
+    const userHeader = document.createElement("h4");
+    userHeader.className = "photo-user-header";
+    userHeader.innerHTML = "No photos available";
+
+    const photoDescription = document.createElement("p");
+    photoDescription.className = "photo-description";
+    photoDescription.innerHTML = "Go to 'Upload Picture' to begin.";
+
+    photoContainer.appendChild(userHeader);
+    photoContainer.appendChild(photoDescription);
+
+    contentDiv.appendChild(photoContainer);
+  }
 
   photoJson.forEach((photo) => {
     const photoContainer = document.createElement("div");
@@ -16,13 +63,26 @@ const showMyPhotos = (photoJson) => {
     const imageElement = document.createElement("img");
     imageElement.src = "./uploads/" + photo.imageId;
 
-    const photoDescription = document.createElement("p");
-    photoDescription.className = "photo-description";
+    const photoDescription = document.createElement("textarea");
+    photoDescription.className = "descriptionBox";
     photoDescription.innerHTML = photo.description;
 
+    const updateButton = document.createElement("button");
+    updateButton.className = "button";
+    updateButton.innerHTML = "Update Description";
+    updateButton.onclick = () =>
+      updateDescriptions(photo.imageId, photoDescription.value);
+
+    const deleteButton = document.createElement("button");
+    deleteButton.className = "deleteButton button";
+    deleteButton.innerHTML = "❌";
+    deleteButton.onclick = () => deletePhotos(photo.imageId);
+
     photoContainer.appendChild(userHeader);
+    userHeader.appendChild(deleteButton);
     photoContainer.appendChild(imageElement);
     photoContainer.appendChild(photoDescription);
+    photoContainer.appendChild(updateButton);
 
     contentDiv.appendChild(photoContainer);
   });
@@ -35,8 +95,9 @@ const fetchMyPhotos = () => {
 
     if (this.status == 200) {
       // var data = JSON.parse(this.responseText);
-      console.log(JSON.parse(this.response));
-      showMyPhotos(JSON.parse(this.response));
+      console.log(this.response);
+      //console.log(JSON.parse(this.response));
+      showMyPhotos(JSON.parse(this.response) || [{ description: "nophoto" }]);
       // we get the returned data
     }
 

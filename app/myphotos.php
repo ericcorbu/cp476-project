@@ -18,10 +18,10 @@ echo '
     </head>
     <body>
         <nav class="navbar">
-            <a href="index.php">Home</a> |
-            <a href="myphotos.php">My Pictures</a> |
-            <a href="upload.php">Upload Picture</a> |
-            <a href="account.php">Account</a> |
+            <a href="index.php">Home</a>
+            <a href="myphotos.php">My Pictures</a>
+            <a href="upload.php">Upload Picture</a>
+            <a href="account.php">Account</a>
             <a href="logout.php">Logout</a>
         </nav>
         <div class="content"></div>
@@ -30,7 +30,11 @@ echo '
 }
 else if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Check if the user is logged in, if not then redirect him to login page
+    
     if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+        $decoded = json_decode(file_get_contents('php://input'), true);
+        if(!isset($decoded["message"])){
+           //echo var_dump($decoded);
             $userId = $_SESSION["id"];
             $sql = "SELECT photos.imageId, photos.description, photos.is_private, users.displayname FROM photos
                     INNER JOIN users ON photos.userId=users.id
@@ -51,6 +55,7 @@ else if($_SERVER["REQUEST_METHOD"] == "POST"){
 
                     }
                     echo json_encode($rows); 
+                    //echo var_dump($_POST);
             }
                 else{
                     echo "Oops! Something went wrong. Please try again later.";
@@ -58,6 +63,49 @@ else if($_SERVER["REQUEST_METHOD"] == "POST"){
     
                 // Close statement
                 $stmt->close();
+            }
+            }
+            // if (isset($_POST['message']) && $_POST['message'] == "update")
+            else  if (isset($decoded['message']) && $decoded['message'] == "update"){
+
+                $sql = "UPDATE photos SET description = ? WHERE imageId = ?";
+                
+                if($stmt = $mysqli->prepare($sql)){
+                    // Bind variables to the prepared statement as parameters
+
+                    $newDescription = trim($decoded["description"]);
+                    $imageId = trim($decoded["id"]);
+                    $stmt->bind_param("ss", $newDescription, $imageId);
+                    // Attempt to execute the prepared statement
+                    if($stmt->execute()){
+                        echo json_encode(array("status"=>"success")); 
+                }
+                    else{
+                        echo json_encode(array("status"=> "error")); 
+                    }
+        
+                    // Close statement
+                    $stmt->close();
+                }
+            }
+            else  if (isset($decoded['message']) && $decoded['message'] == "delete"){
+
+                $sql = "DELETE FROM photos WHERE imageId = ?";
+                
+                if($stmt = $mysqli->prepare($sql)){
+                    $imageId = trim($decoded["id"]);
+                    $stmt->bind_param("s", $imageId);
+                    // Attempt to execute the prepared statement
+                    if($stmt->execute()){
+                        echo json_encode(array("status"=> "success")); 
+                }
+                    else{
+                        echo json_encode(array("status"=> "error")); 
+                    }
+        
+                    // Close statement
+                    $stmt->close();
+                }
             }
         }
     
