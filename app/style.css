@@ -8,3 +8,46 @@
 img {
   width: 100%;
 }
+.photo-container {
+  border: solid #dbdbdb;
+  border-width: 1px;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #ffffff;
+}
+.account-container {
+  border: solid #dbdbdb;
+  border-width: 1px;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #ffffff;
+}
+.default-container {
+  border: solid #dbdbdb;
+  border-width: 1px;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #ffffff;
+}
+html {
+  background-color: #fafafa;
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+.photo-user-header {
+  margin-top: 8px;
+}
+.navbar {
+  top: 0px;
+  background-color: #ffffff;
+  height: 5vh;
+}
+body {
+  margin: 0;
+}
+.descriptionBox {
+  width: 99%;
+  margin-right: 10px;
+}

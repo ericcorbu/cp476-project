@@ -19,13 +19,15 @@ require_once "config.php";
 	<title>Upload a Photo</title>
 </head>
 <body>
-        <nav>
+        <nav class="navbar">
             <a href="index.php">Home</a> |
             <a href="myphotos.php">My Pictures</a> |
             <a href="upload.php">Upload Picture</a> |
             <a href="account.php">Account</a> |
             <a href="logout.php">Logout</a>
         </nav>
+<div class="content">
+    <div class="default-container">
 <form action="handle_upload.php" enctype="multipart/form-data" method="post" id="uploadform">
 	<h3>Select a photo from your device:</h3>
 	
@@ -33,11 +35,12 @@ require_once "config.php";
     
         <label>Description</label>
         <br/>
-        <textarea form="uploadform" name="description"></textarea>
+        <textarea class="descriptionBox" form="uploadform" name="description" maxlength="280"></textarea>
     
     </p>
 	<p><input type="submit" name="submit" value="Upload Photo"></p>
 </form>
-
+</div>
+</div>
 </body>
 </html> 

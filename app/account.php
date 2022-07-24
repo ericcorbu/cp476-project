@@ -89,12 +89,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <nav>
+        <nav class="navbar">
             <a href="index.php">Home</a> |
-            <a href="/css/">My Pictures</a> |
+            <a href="myphotos.php">My Pictures</a> |
             <a href="upload.php">Upload Picture</a> |
             <a href="account.php">Account</a>
         </nav>
+        <div class="content">
+            <div class="account-container">
         <h1>Update Account Info - @<?php echo $userData['username']?></h1>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <h2>Change Display Name</h2>
@@ -122,5 +124,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <input type="submit" class="btn btn-primary" value="Update Password">
             </div>
         </form>
+</div>
+</div>
     </body>
 </html>
