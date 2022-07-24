@@ -14,15 +14,17 @@ require_once "config.php";
 <!doctype html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="style.css">
 	<meta charset="utf-8">
 	<title>Upload a Photo</title>
 </head>
 <body>
         <nav>
             <a href="index.php">Home</a> |
-            <a href="/css/">My Pictures</a> |
+            <a href="myphotos.php">My Pictures</a> |
             <a href="upload.php">Upload Picture</a> |
-            <a href="account.php">Account</a>
+            <a href="account.php">Account</a> |
+            <a href="logout.php">Logout</a>
         </nav>
 <form action="handle_upload.php" enctype="multipart/form-data" method="post" id="uploadform">
 	<h3>Select a photo from your device:</h3>

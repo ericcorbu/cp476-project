@@ -14,7 +14,7 @@ echo '
 <html lang="en">
     <head>
     <link rel="stylesheet" href="style.css">
-    <script src="index.js"></script> 
+    <script src="myphotos.js"></script> 
     </head>
     <body>
         <nav class="navbar">
@@ -34,13 +34,11 @@ else if($_SERVER["REQUEST_METHOD"] == "POST"){
             $userId = $_SESSION["id"];
             $sql = "SELECT photos.imageId, photos.description, photos.is_private, users.displayname FROM photos
                     INNER JOIN users ON photos.userId=users.id
-                    WHERE is_private = ?;";
+                    WHERE userId = ?;";
             
             if($stmt = $mysqli->prepare($sql)){
                 // Bind variables to the prepared statement as parameters
-                $onlyPublic = 0;
-
-                $stmt->bind_param("i",$onlyPublic);
+                $stmt->bind_param("s", $userId);
                 $rows = array();
                 // Attempt to execute the prepared statement
                 if($stmt->execute()){

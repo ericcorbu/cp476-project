@@ -16,13 +16,31 @@ require_once "config.php";
     $imageId = bin2hex(random_bytes(16)) . "." . pathinfo($_FILES['the_file']['name'], PATHINFO_EXTENSION);
     $userId = $_SESSION['id'];
     $description = $_POST["description"];
+    $is_private = FALSE;
 
 	// Try to move the uploaded file:
 	if (move_uploaded_file ($_FILES['the_file']['tmp_name'], "./uploads/$imageId")) {
+
+        $sql = "INSERT INTO photos (imageId, userId, description, is_private) VALUES (?, ?, ?, ?)";
 	
 		print '<p>Your file has been uploaded.</p>';
         print ($_SESSION['id']);
         print($imageId);
+        if($stmt = $mysqli->prepare($sql)){
+            // Bind variables to the prepared statement as parameters
+            $stmt->bind_param("sisi", $imageId, $userId, $description, $is_private);
+            
+            // Attempt to execute the prepared statement
+            if($stmt->execute()){
+                // Redirect to login page
+                header("location: index.php");
+            } else{
+                echo "Oops! Something went wrong. Please try again later.";
+            }
+
+            // Close statement
+            $stmt->close();
+        }
 	
 	} else { // Problem!
 

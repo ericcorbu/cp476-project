@@ -29,14 +29,15 @@
         );";
 
     $CREATE_PHOTOS_TABLE = "CREATE TABLE photos (
-        id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+        imageId VARCHAR(100) NOT NULL,
         userid INT NOT NULL,
-        description VARCHAR(255)
+        description VARCHAR(280),
+        is_private BOOLEAN
         );";
 
 
         
-    $db_operations = array($CREATE_DB, $USE_DB, $CREATE_USERS_TABLE);
+    $db_operations = array($CREATE_DB, $USE_DB, $CREATE_USERS_TABLE, $CREATE_PHOTOS_TABLE);
     $is_error = FALSE;
     foreach($db_operations as $operation) {
         if($conn->query($operation) != TRUE) {
