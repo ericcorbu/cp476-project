@@ -93,7 +93,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <a href="index.php">Home</a>
             <a href="myphotos.php">My Pictures</a>
             <a href="upload.php">Upload Picture</a>
-            <a href="account.php">Account</a>
+            <a href="account.php"><strong>Account</strong></a>
             <a href="logout.php">Logout</a>
         </nav>
         <div class="content">

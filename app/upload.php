@@ -22,7 +22,7 @@ require_once "config.php";
         <nav class="navbar">
             <a href="index.php">Home</a>
             <a href="myphotos.php">My Pictures</a>
-            <a href="upload.php">Upload Picture</a>
+            <a href="upload.php"><strong>Upload Picture</strong></a>
             <a href="account.php">Account</a>
             <a href="logout.php">Logout</a>
         </nav>
