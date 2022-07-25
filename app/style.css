@@ -1,5 +1,5 @@
 .content {
-  height: 95vh;
+  height: calc(100%-44px);
   width: 40%;
   overflow-x: scroll;
   margin-left: auto;
@@ -42,7 +42,7 @@ html {
 .navbar {
   top: 0px;
   background-color: #ffffff;
-  height: 5vh;
+  height: 44px;
 }
 body {
   margin: 0;
@@ -52,10 +52,12 @@ body {
   margin-right: 10px;
 }
 .button {
-  padding: 10px;
-  background-color: lightskyblue;
-  border-radius: 10px;
+  padding: 6px 12px 6px 12px;
+  background-color: #e2e6ea;
+  border-radius: 0.25rem;
   border-width: 0;
+  font-size: 1rem;
+  cursor: pointer;
 }
 .deleteButton {
   background-color: lightgrey;
@@ -68,4 +70,11 @@ body {
 }
 .navbar a:nth-child(-n + 2) {
   float: left;
+}
+label {
+  margin: 10px;
+}
+textarea {
+  margin-top: 10px;
+  margin-bottom: 10px;
 }

@@ -98,7 +98,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         </nav>
         <div class="content">
             <div class="account-container">
-        <h1>Update Account Info - @<?php echo $userData['username']?></h1>
+        <h1>Update Account Info: @<?php echo $userData['username']?></h1>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <h2>Change Display Name</h2>
             <div class="form-group">
