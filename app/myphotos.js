@@ -63,7 +63,7 @@ const showMyPhotos = (photoJson) => {
 
     const userHeader = document.createElement("h4");
     userHeader.className = "photo-user-header";
-    userHeader.innerHTML = photo.displayname;
+    userHeader.innerHTML = "@" + photo.displayname;
 
     const imageElement = document.createElement("img");
     imageElement.src = "./uploads/" + photo.imageId;
