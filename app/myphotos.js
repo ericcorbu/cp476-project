@@ -15,7 +15,7 @@ const updateDescriptions = (photoId, newDescription, isPrivate) => {
     if (this.readyState != 4) return;
 
     if (this.status == 200) {
-      alert("Description updated successfully");
+      alert("Description/Details updated successfully");
       location.reload();
       //console.log(this.response);
     }
@@ -74,7 +74,7 @@ const showMyPhotos = (photoJson) => {
 
     const updateButton = document.createElement("button");
     updateButton.className = "button";
-    updateButton.innerHTML = "Update Description";
+    updateButton.innerHTML = "Update";
     updateButton.onclick = () =>
       updateDescriptions(
         photo.imageId,
@@ -86,6 +86,8 @@ const showMyPhotos = (photoJson) => {
     deleteButton.className = "deleteButton button";
     deleteButton.innerHTML = "❌";
     deleteButton.onclick = () => deletePhotos(photo.imageId);
+
+    const visibilityForm = document.createElement("form");
 
     const publicRadioButton = document.createElement("input");
     publicRadioButton.type = "radio";
@@ -101,6 +103,13 @@ const showMyPhotos = (photoJson) => {
     const privateLabel = document.createElement("label");
     privateLabel.textContent = "Private";
 
+    visibilityForm.appendChild(photoDescription);
+    visibilityForm.appendChild(publicRadioButton);
+    visibilityForm.appendChild(publicLabel);
+    visibilityForm.appendChild(privateRadioButton);
+    visibilityForm.appendChild(privateLabel);
+    visibilityForm.appendChild(updateButton);
+
     if (photo.is_private) {
       privateRadioButton.checked = true;
     } else {
@@ -110,14 +119,8 @@ const showMyPhotos = (photoJson) => {
     photoContainer.appendChild(userHeader);
     userHeader.appendChild(deleteButton);
     photoContainer.appendChild(imageElement);
-    photoContainer.appendChild(photoDescription);
 
-    photoContainer.appendChild(publicRadioButton);
-    photoContainer.appendChild(publicLabel);
-    photoContainer.appendChild(privateRadioButton);
-    photoContainer.appendChild(privateLabel);
-
-    photoContainer.appendChild(updateButton);
+    photoContainer.appendChild(visibilityForm);
 
     contentDiv.appendChild(photoContainer);
   });
