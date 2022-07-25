@@ -1,9 +1,9 @@
 .content {
-  height: calc(100%-44px);
   width: 40%;
-  overflow-x: scroll;
+  overflow-y: scroll;
   margin-left: auto;
   margin-right: auto;
+  height: 95vh;
 }
 img {
   width: 100%;
@@ -46,6 +46,7 @@ html {
 }
 body {
   margin: 0;
+  height: 100vh;
 }
 .descriptionBox {
   width: 99%;
