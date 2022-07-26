@@ -135,7 +135,7 @@ const fetchMyPhotos = () => {
       // var data = JSON.parse(this.responseText);
       console.log(this.response);
       //console.log(JSON.parse(this.response));
-      showMyPhotos(JSON.parse(this.response) || [{ description: "nophoto" }]);
+      showMyPhotos(JSON.parse(this.response).reverse() || [{ description: "nophoto" }]);
       // we get the returned data
     }
 

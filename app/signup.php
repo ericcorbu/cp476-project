@@ -66,20 +66,20 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Check input errors before inserting in database
     if(empty($username_err) && empty($password_err) && empty($confirm_password_err)){
         
-        // Prepare an insert statement
+        // Prepare insert statement
         $sql = "INSERT INTO users (username, password, displayname) VALUES (?, ?, ?)";
          
         if($stmt = $mysqli->prepare($sql)){
-            // Bind variables to the prepared statement as parameters
+            // Bind variables to the prepared statement
             $stmt->bind_param("sss", $param_username, $param_password, $param_username);
             
             // Set parameters
             $param_username = $username;
             $param_password = password_hash($password, PASSWORD_DEFAULT); // Creates a password hash
             
-            // Attempt to execute the prepared statement
+            // Tru to execute the prepared statement
             if($stmt->execute()){
-                // Redirect to login page
+                // Redirect to login
                 header("location: login.php");
             } else{
                 echo "Oops! Something went wrong. Please try again later.";
