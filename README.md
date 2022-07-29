@@ -4,10 +4,9 @@
 
 This project is a simple photo sharing site.
 
-Authenticated users can upload photos, either with public or private permissions, with a description and tags.
-Authenticated Users can view their private photos, and edit their upload.
+Authenticated users can upload photos, either with public or private permissions, with a description.
+Authenticated Users can view their private photos, and edit their upload or view public photos.
 
-Unauthenticated uses can view public photos only.
 
 ## Setup
 
